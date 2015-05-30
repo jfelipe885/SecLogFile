@@ -1,0 +1,235 @@
+Test begins...
+
+Unicode tests(4 invalid)
+
+
+
+
+
+Same entry twice test(second invalid)
+
+
+
+Logappend to /dev/null(invalid)
+
+
+Logread to /dev/null(invalid)
+
+
+
+Periods tests(should pass)
+
+
+Filenames with extensions(should pass)
+
+
+
+Logappen files on current path(should pass)
+
+
+Logread files on current path(should pass)
+
+
+
+Guest cannot enter to gallery if already in(invalid twice)
+
+
+
+Employee cannot enter to gallery if already in(second invalid)
+
+
+
+Cannot add at smaller timpestamp(second invalid)
+
+
+
+Invalid token(invalid)
+
+
+Employee and guest can have the same name(second invalid)
+
+
+
+
+Test parameters order, all should work
+
+
+
+Cannot have both employee and guest (invalid)
+
+
+Missing logfile(invalid)
+
+
+Cannot have both arrival and departure (invalid)
+
+
+Employee cannot leave gallery without leaving room (third invalid)
+
+
+
+
+Employee cannot leave room without being in it (second invalid)
+
+
+
+Employee cannot arrive to another room withount first leaving it (third invalid)
+
+
+
+
+Employee attempt to leave room (all OK, fifth invalid)
+
+
+
+
+
+
+Employee attempt to leave another room (third invalid)
+
+
+
+
+Guest cannot leave gallery without leaving room (third invalid)
+
+
+
+
+Guest cannot leave room without being in it (second invalid)
+
+
+
+Guest cannot arrive to another room whithout leaving the first (third invalid)
+
+
+
+
+Guest attempt to leave room again (all OK, fifth invalid)
+
+
+
+
+
+
+Guest attempt to leave another room (third invalid)
+
+
+
+
+Cannot leave room without being in it (invalid)
+
+
+Cannot leave gallery without being in it (invalid)
+
+
+Should print error on non existent batch (invalid)
+
+
+Cannot have non numeric room (third invalid)
+
+
+
+
+Room 2, 02, 002 should all be 2 (15 guests first 4 in room 2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Should accept really long names for employees (should be OK)
+
+
+Should accept really long names for guests (should be OK)
+
+
+Should not accept non numeric timpestamp (invalid)
+
+
+Cannot have two logs at same time (?)
+
+
+
+Should not have the second entry (?)
+
+
+
+
+All guests should appear, watch rooms on new lines
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+All emps should appear, watch rooms on new lines
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Should not be valid last logappend (two ok, third invalid - repeated emp)
+
+
+
+
+
+Cannot arrive to room already being there (third invalid)
+
+
+
+
+
+Should not accept more than one log file (invalid)
+
+
+Non existing batch file is error (invalid)
+
+
+Bad path should result in error (invalid)
+
+
+Timestamp 0 is error (invalid)
+
+
+Timestamp greater than 1073741823 or negative should results in error (invalid twice)
+
+
+
+Room greater than 1073741823 or negative should results in error (third and fourth invalid)
+
+
+
+
+

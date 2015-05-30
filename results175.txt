@@ -1,0 +1,373 @@
+Test begins...
+
+Unicode tests(4 invalid)
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+
+Same entry twice test(second invalid)
+invalid
+
+invalid
+
+
+Logappend to /dev/null(invalid)
+
+
+Logread to /dev/null(invalid)
+
+
+
+
+
+Periods tests(should pass)
+invalid
+
+
+Filenames with extensions(should pass)
+invalid
+
+invalid
+
+
+Logappen files on current path(should pass)
+invalid
+
+
+Logread files on current path(should pass)
+invalid
+
+invalid
+
+
+Guest cannot enter to gallery if already in(invalid twice)
+invalid
+
+invalid
+
+
+Employee cannot enter to gallery if already in(second invalid)
+invalid
+
+invalid
+
+
+Cannot add at smaller timpestamp(second invalid)
+invalid
+
+invalid
+
+
+Invalid token(invalid)
+invalid
+
+
+Employee and guest can have the same name(second invalid)
+invalid
+
+invalid
+
+invalid
+
+
+Test parameters order, all should work
+invalid
+
+invalid
+
+
+Cannot have both employee and guest (invalid)
+invalid
+
+
+Missing logfile(invalid)
+invalid
+
+
+Cannot have both arrival and departure (invalid)
+invalid
+
+
+Employee cannot leave gallery without leaving room (third invalid)
+invalid
+
+invalid
+
+invalid
+
+
+Employee cannot leave room without being in it (second invalid)
+invalid
+
+invalid
+
+
+Employee cannot arrive to another room withount first leaving it (third invalid)
+invalid
+
+invalid
+
+invalid
+
+
+Employee attempt to leave room (all OK, fifth invalid)
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+
+Employee attempt to leave another room (third invalid)
+invalid
+
+invalid
+
+invalid
+
+
+Guest cannot leave gallery without leaving room (third invalid)
+invalid
+
+invalid
+
+invalid
+
+
+Guest cannot leave room without being in it (second invalid)
+invalid
+
+invalid
+
+
+Guest cannot arrive to another room whithout leaving the first (third invalid)
+invalid
+
+invalid
+
+invalid
+
+
+Guest attempt to leave room again (all OK, fifth invalid)
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+
+Guest attempt to leave another room (third invalid)
+invalid
+
+invalid
+
+invalid
+
+
+Cannot leave room without being in it (invalid)
+invalid
+
+
+Cannot leave gallery without being in it (invalid)
+invalid
+
+
+Should print error on non existent batch (invalid)
+invalid
+
+
+Cannot have non numeric room (third invalid)
+invalid
+
+invalid
+
+invalid
+
+
+Room 2, 02, 002 should all be 2 (15 guests first 4 in room 2)
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+
+Should accept really long names for employees (should be OK)
+invalid
+
+
+Should accept really long names for guests (should be OK)
+invalid
+
+
+Should not accept non numeric timpestamp (invalid)
+invalid
+
+
+Cannot have two logs at same time (?)
+invalid
+
+invalid
+
+
+Should not have the second entry (?)
+invalid
+
+invalid
+
+invalid
+
+
+All guests should appear, watch rooms on new lines
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+
+All emps should appear, watch rooms on new lines
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+
+Should not be valid last logappend (two ok, third invalid - repeated emp)
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+
+Cannot arrive to room already being there (third invalid)
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+
+Should not accept more than one log file (invalid)
+invalid
+
+
+Non existing batch file is error (invalid)
+invalid
+
+
+Bad path should result in error (invalid)
+invalid
+
+
+Timestamp 0 is error (invalid)
+invalid
+
+
+Timestamp greater than 1073741823 or negative should results in error (invalid twice)
+invalid
+
+invalid
+
+
+Room greater than 1073741823 or negative should results in error (third and fourth invalid)
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+

@@ -1,0 +1,316 @@
+Test begins...
+
+Unicode tests(4 invalid)
+invalid
+
+invalid
+
+invalid
+
+invalid
+
+
+Same entry twice test(second invalid)
+
+invalid
+
+
+Logappend to /dev/null(invalid)
+invalid
+
+
+Logread to /dev/null(invalid)
+
+integrity violation
+
+
+Periods tests(should pass)
+
+
+Filenames with extensions(should pass)
+
+empd, empe
+
+
+
+Logappen files on current path(should pass)
+
+
+Logread files on current path(should pass)
+
+empf, empg
+
+
+
+Guest cannot enter to gallery if already in(invalid twice)
+invalid
+
+invalid
+
+
+Employee cannot enter to gallery if already in(second invalid)
+
+invalid
+
+
+Cannot add at smaller timpestamp(second invalid)
+
+invalid
+
+
+Invalid token(invalid)
+invalid
+
+
+Employee and guest can have the same name(second invalid)
+
+
+bob
+bob
+
+
+Test parameters order, all should work
+
+
+
+Cannot have both employee and guest (invalid)
+invalid
+
+
+Missing logfile(invalid)
+invalid
+
+
+Cannot have both arrival and departure (invalid)
+invalid
+
+
+Employee cannot leave gallery without leaving room (third invalid)
+
+
+invalid
+
+
+Employee cannot leave room without being in it (second invalid)
+
+invalid
+
+
+Employee cannot arrive to another room withount first leaving it (third invalid)
+
+
+invalid
+
+
+Employee attempt to leave room (all OK, fifth invalid)
+
+
+
+
+invalid
+
+
+Employee attempt to leave another room (third invalid)
+
+
+invalid
+
+
+Guest cannot leave gallery without leaving room (third invalid)
+
+
+invalid
+
+
+Guest cannot leave room without being in it (second invalid)
+
+invalid
+
+
+Guest cannot arrive to another room whithout leaving the first (third invalid)
+
+
+invalid
+
+
+Guest attempt to leave room again (all OK, fifth invalid)
+
+
+
+
+invalid
+
+
+Guest attempt to leave another room (third invalid)
+
+
+invalid
+
+
+Cannot leave room without being in it (invalid)
+invalid
+
+
+Cannot leave gallery without being in it (invalid)
+invalid
+
+
+Should print error on non existent batch (invalid)
+invalid
+
+
+Cannot have non numeric room (third invalid)
+
+invalid
+
+invalid
+
+
+Room 2, 02, 002 should all be 2 (15 guests first 4 in room 2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+baseA, eA, eB, eC, eE
+eF, eG, eH, eJ, gA, gB, gC, gD, gE, gF, gG, gH, gI, gJ
+0: gD
+1: eA, eC, eE, eF, eH, eJ
+2: gA, gB, gC
+
+
+Should accept really long names for employees (should be OK)
+
+
+Should accept really long names for guests (should be OK)
+
+
+Should not accept non numeric timpestamp (invalid)
+invalid
+
+
+Cannot have two logs at same time (?)
+
+
+
+Should not have the second entry (?)
+
+
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, baseA, eA, eB, eC, eE, eO, eP, eQ
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, eF, eG, eH, eJ, gA, gB, gC, gD, gE, gF, gG, gH, gI, gJ, gO
+0: gD
+1: eA, eC, eE, eF, eH, eJ
+2: gA, gB, gC
+
+
+All guests should appear, watch rooms on new lines
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, baseA, eA, eB, eC, eE, eO, eP, eQ
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, eF, eG, eH, eJ, gA, gAA, gB, gBA, gC, gCA, gD, gDA, gE, gEA, gF, gFA, gG, gGA, gH, gHA, gI, gIA, gJ, gJA, gO
+0: gD, gDA
+1: eA, eC, eE, eF, eH, eJ
+2: gA, gAA, gB, gBA, gC, gCA
+
+
+All emps should appear, watch rooms on new lines
+
+
+
+
+
+
+
+
+
+
+
+invalid
+
+invalid
+
+invalid
+
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, baseA, eA, eB, eC, eE, eO, eP, eQ, emA, emB, emC, emD, emE, emF, emG, emH, emI, emJ
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, eF, eG, eH, eJ, gA, gAA, gB, gBA, gC, gCA, gD, gDA, gE, gEA, gF, gFA, gG, gGA, gH, gHA, gI, gIA, gJ, gJA, gO
+0: gD, gDA
+1: eA, eC, eE, eF, eH, eJ
+2: emA, gA, gAA, gB, gBA, gC, gCA
+
+
+Should not be valid last logappend (two ok, third invalid - repeated emp)
+invalid
+
+
+invalid
+
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, baseA, eA, eB, eC, eE, eO, eP, eQ, emA, emB, emC, emD, emE, emF, emG, emH, emI, emJ
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, eF, eG, eH, eJ, gA, gAA, gB, gBA, gC, gCA, gD, gDA, gE, gEA, gF, gFA, gG, gGA, gH, gHA, gI, gIA, gJ, gJA, gO
+0: gD, gDA
+1: eA, eC, eE, eF, eH, eJ, eQ
+2: emA, gA, gAA, gB, gBA, gC, gCA
+
+
+Cannot arrive to room already being there (third invalid)
+
+
+invalid
+
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, baseA, eA, eB, eC, eE, eO, eP, eQ, emA, emB, emC, emD, emE, emF, emG, emH, emI, emJ
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, eF, eG, eH, eJ, gA, gAA, gB, gBA, gC, gCA, gD, gDA, gE, gEA, gF, gFA, gG, gGA, gH, gHA, gI, gIA, gJ, gJA, gO, gaa
+0: gD, gDA
+1: eA, eC, eE, eF, eH, eJ, eQ, gaa
+2: emA, gA, gAA, gB, gBA, gC, gCA
+
+
+Should not accept more than one log file (invalid)
+invalid
+
+
+Non existing batch file is error (invalid)
+invalid
+
+
+Bad path should result in error (invalid)
+invalid
+
+
+Timestamp 0 is error (invalid)
+invalid
+
+
+Timestamp greater than 1073741823 or negative should results in error (invalid twice)
+invalid
+
+invalid
+
+
+Room greater than 1073741823 or negative should results in error (third and fourth invalid)
+
+
+invalid
+
+invalid
+
+
