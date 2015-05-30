@@ -1,0 +1,259 @@
+## Unicode tests
+./logappend -K ௲ -T 2 -E emp -A logfile
+./logappend -K token -T ௲ -E emp -A logfile
+./logappend -K token -T 2  -E ௲ -A logfile
+./logappend -K token -T 2  -E emp -A ௲
+
+## Cannot have same entry twice
+./logappend -K token -T 2 -G guest -A logfile
+./logappend -K token -T 2 -G guest -A logfile
+
+## Logappend to /dev/null should be invalid
+./logappend -T 1 -K token -E emp -A /dev/null
+
+## Logappend to /etc/passwd should be invalid
+./logappend -T 1 -K token -E emp -A /etc/passwd
+
+## Logappend to batch /etc/passwd should be invalid once
+./logappend -B /etc/passwd
+
+## Logread to /dev/null should be integrity violation
+./logread -K token -S /dev/null
+./logread -K token -T -G guest /dev/null
+./logread -K token -R -G guest /dev/null
+./logread -K token -I -G guest /dev/null
+
+## Logread to /etc/passwd should be integrity violation
+./logread -K token -S /etc/passwd
+./logread -K token -T -G guest /etc/passwd
+./logread -K token -R -G guest /etc/passwd
+./logread -K token -I -G guest /etc/passwd
+
+## Periods should be accepted on filenames
+./logappend -T 1 -K token -E emp -A file.log
+
+## Filenames with periods should be able to be opened
+./logappend -T 1 -K token -E emp -A file.log
+./logread -K token -S file.log
+
+## Logappend should make file on current path
+./logappend -T 1 -K token -E emp -A ./1
+
+## Logread should be able to read files on current path
+./logappend -T 1 -K token -E emp -A ./1
+./logread -K token -S ./1
+
+## Cannot enter guest to gallery if already in gallery
+./logappend -K token -T 1 -G guest -A logfile
+./logappend -K token -T 2 -G guest -A logfile
+
+## Cannot enter employee to gallery if already in gallery
+./logappend -K token -T 1 -E emp -A logfile
+./logappend -K token -T 2 -E emp -A logfile
+
+## Cannot add to smaller timestamp
+./logappend -K token -T 2 -G guest -A logfile
+./logappend -K token -T 1 -G guest -A logfile
+
+## Invalid token is error
+./logappend -K %hello -T 2 -G guest -A log
+
+## Employee and guest can have same name
+./logappend -K token -T 2 -G bob -A log
+./logappend -K token -T 3 -E bob -A log
+./logread -K token -S log
+
+## Test parameter order, all should work
+./logappend -K token -T 1 -G guest -A logfile
+./logappend -T 1 -K token -G guest -A logfile
+
+## Cannot have both employee and guest
+./logappend -K token -T 1 -G guest -E employee -A log
+
+## Missing log file error
+./logappend -K token -T 1 -G guest -E employee -A
+
+## Cannot have both arrival and departure
+./logappend -K token -T 1 -E emp -A -L log
+
+## Employee cannot leave gallery without leaving room
+./logappend  -K token -T 181 -E eI -A log1
+./logappend  -K token -T 182 -E eI -A -R 1 log1
+./logappend  -K token -T 183 -E eI -L log1
+
+## Employee cannot leave room without being in it
+./logappend -K token -T 101 -E eE -A log1
+./logappend  -K token -T 102 -E eE -L -R 1 log1
+
+## Employee cannot arrive to another room without first leaving it
+./logappend -K token -T 141 -E eG -A log1
+./logappend -K token -T 142 -E eG -A -R 1 log1
+./logappend -K token -T 143 -E eG -A -R 2 log1
+
+## Employee attempt to leave room
+./logappend -T 341 -K token -E eS -A log1
+./logappend -T 342 -K token -E eS -A -R 1 log1
+./logappend -T 343 -K token -E eS -L -R 1 log1
+./logappend -T 344 -K token -E eS -L log1
+./logappend -T 345 -K token -E eS -L -R 1 log1
+
+## Employee attempt to leave another room
+./logappend -T 121 -K token -E eF -A log1
+./logappend -T 122 -K token -E eF -A -R 1 log1
+./logappend -T 123 -K token -E eF -L -R 2 log1
+
+## Guest cannot leave gallery without leaving room
+./logappend  -K token -T 181 -G eI -A log1
+./logappend  -K token -T 182 -G eI -A -R 1 log1
+./logappend  -K token -T 183 -G eI -L log1
+
+## Guest cannot leave room without being in it
+./logappend -K token -T 101 -G eE -A log1
+./logappend  -K token -T 102 -G eE -L -R 1 log1
+
+## Guest cannot arrive to another room without first leaving it
+./logappend -K token -T 141 -G eG -A log1
+./logappend -K token -T 142 -G eG -A -R 1 log1
+./logappend -K token -T 143 -G eG -A -R 2 log1
+
+## Guest attempt to leave room
+./logappend -T 341 -K token -G eS -A log1
+./logappend -T 342 -K token -G eS -A -R 1 log1
+./logappend -T 343 -K token -G eS -L -R 1 log1
+./logappend -T 344 -K token -G eS -L log1
+./logappend -T 345 -K token -G eS -L -R 1 log1
+
+## Guest attempt to leave another room
+./logappend -T 121 -K token -G eF -A log1
+./logappend -T 122 -K token -G eF -A -R 1 log1
+./logappend -T 123 -K token -G eF -L -R 2 log1
+
+## Cannot leave room without being in it!
+./logappend -T 91 -K token -G gD -L -R 2 log1
+
+## Cannot leave gallery without being in it
+./logappend -T 92 -K token -G gD -L log1
+
+## Should print error on non existent batch
+./logappend -B foo
+
+## Cannot have non numeric room
+./logappend -K token -T 1 -E base -A log1
+./logappend -K token -T 9 -G guestI -A log1
+./logappend -K token -T 20 -G guestI -A -R foo log1
+
+## Non numeric room for leave
+./logappend -K token -T 1 -E base -A log1
+./logappend -K token -T 9 -G guestI -A log1
+./logappend -K token -T 20 -G guestI -A -R 1 log1
+./logappend -K token -T 20 -G guestI -L -R foo log1
+
+## Room 2, 02, 002 should all be 2
+./logappend -T 1 -K token -G guestA -A log1
+./logappend -T 2 -K token -G guestB -A log1
+./logappend -T 3 -K token -G guestC -A log1
+./logappend -T 4 -K token -G guestD -A log1
+./logappend -T 5 -K token -G guestE -A log1
+./logappend -T 6 -K token -G guestF -A log1
+./logappend -T 7 -K token -G guestG -A log1
+./logappend -T 8 -K token -G guestH -A log1
+./logappend -T 10 -K token -G guestJ -A log1
+./logappend -T 11 -K token -G guestK -A log1
+./logappend -T 12 -K token -G guestA -A -R 2 log1
+./logappend -T 13 -K token -G guestB -A -R 02 log1
+./logappend -T 14 -K token -G guestC -A -R 002 log1
+./logappend -T 15 -K token -G guestD -A -R 0 log1
+./logread -K token -S log1
+
+## Should accept really long names employee
+./logappend -K token -T 1 -E aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -A log1
+
+## Should accept really long names guest
+./logappend -K token -T 1 -G aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -A log1
+
+## Should not accept non numeric timestamp
+./logappend -K token -T foo -E alphatimestampe -A log1
+
+## Cannot have two logs same time
+./logappend -T 5 -K token -E pppp -A log1
+./logappend -T 5 -K token -E pD -A log1
+
+## Should not have the second entry
+./logappend -T 5 -K token -E pppp -A log1
+./logappend -T 5 -K token -G pE -A log1
+./logread -K token -S log1
+
+## All guests should appear, watch rooms on new lines
+./logappend -K token -T 1 -G guestA -A log1
+./logappend -K token -T 2 -G guestB -A log1
+./logappend -K token -T 3 -G guestC -A log1
+./logappend -K token -T 4 -G guestD -A log1
+./logappend -K token -T 5 -G guestE -A log1
+./logappend -K token -T 6 -G guestF -A log1
+./logappend -K token -T 7 -G guestG -A log1
+./logappend -K token -T 8 -G guestH -A log1
+./logappend -K token -T 10 -G guestJ -A log1
+./logappend -K token -T 11 -G guestK -A log1
+./logappend -K token -T 12 -G guestA -A -R 2 log1
+./logappend -K token -T 13 -G guestB -A -R 02 log1
+./logappend -K token -T 14 -G guestC -A -R 002 log1
+./logappend -K token -T 15 -G guestD -A -R 0 log1
+./logread -K token -S log1
+
+## All emps should appear, watch rooms on new lines
+./logappend -K token -T 1 -E empA -A log1
+./logappend -K token -T 2 -E empB -A log1
+./logappend -K token -T 3 -E empC -A log1
+./logappend -K token -T 4 -E empD -A log1
+./logappend -K token -T 5 -E empE -A log1
+./logappend -K token -T 6 -E empF -A log1
+./logappend -K token -T 7 -E empG -A log1
+./logappend -K token -T 8 -E empH -A log1
+./logappend -K token -T 10 -E empJ -A log1
+./logappend -K token -T 11 -E empK -A log1
+./logappend -K token -T 12 -E empA -A -R 2 log1
+./logappend -K token -T 13 -E empB -A -R 02 log1
+./logappend -K token -T 14 -E empC -A -R 002 log1
+./logappend -K token -T 15 -E empD -A -R 0 log1
+./logread -K token -S log1
+
+## Should not be valid last logappend
+./logappend -T 261 -K token -E eN -A log1
+./logappend -T 262 -K token -E eN -A -R 1 log1
+./logappend -T 263 -K token -E eN -A log1
+./logread -K token -S log1
+
+## Cannot arrive to room after having arrived on it
+./logappend -T 171 -K token -G gH -A log1
+./logappend -T 172 -K token -G gH -A -R 1 log1
+./logappend -T 173 -K token -G gH -A -R 1 log1
+./logread -K token -S log1
+
+## Should not accept more than one log file
+./logappend -T 1 -K token -G gH -A log log2
+
+## Non existing batch file is error
+./logappend -B pepe
+## Bad path should be error
+./logappend -T 1 -K token ~/
+
+## Timestamp 0 is error
+./logappend -T 0 -K token -G gH -A log2
+
+## Timestamp greater than 1073741823 or negative is error
+./logappend -T 1073741824 -K token -G gH -A log
+
+## Room greater than 1073741823 or negative is error
+./logappend -T 1 -K token -G gH -A log
+./logappend -T 2 -K token -G gH -A -R 1073741824 log
+
+
+Invalid_flags__two_logs_given__expecting_an_error
+Invalid_argument__non_existent_batch_file__expecting_an_error
+Invalid_argument__invalid_path_to_log__expecting_an_error
+{} Invalid_flags__log_missing__expecting_an_error
+Invalid_argument__timestamp_0_is_invalid__expectig_an_error
+Invalid_log_entry__attempt_to_enter_the_gallery_while_being_in_the_gallery__expecting_an_error
+Invalid_argument__room_is_too_big__expecting_an_error
+
+
