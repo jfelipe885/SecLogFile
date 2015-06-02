@@ -375,398 +375,398 @@ echo >> results$1.txt
 
 echo "#####Unicode tests " >>results$1.txt
 echo >> results$1.txt
-./logappend -K ? -T 2 -E emp -A logfile
+./$1/code/build/logappend -K ? -T 2 -E emp -A logfile
 echo >> results$1.txt
-./logappend -K token -T ? -E emp -A logfile
+./$1/code/build/logappend -K token -T ? -E emp -A logfile
 echo >> results$1.txt
-./logappend -K token -T 2  -E ? -A logfile
+./$1/code/build/logappend -K token -T 2  -E ? -A logfile
 echo >> results$1.txt
-./logappend -K token -T 2  -E emp -A ?
+./$1/code/build/logappend -K token -T 2  -E emp -A ?
 echo >> results$1.txt
 
 echo "##Cannot have same entry twice " >> results$1.txt
-./logappend -K token -T 2 -G guest -A logfile
+./$1/code/build/logappend -K token -T 2 -G guest -A logfile
 echo >> results$1.txt
-./logappend -K token -T 2 -G guest -A logfile
+./$1/code/build/logappend -K token -T 2 -G guest -A logfile
 echo >> results$1.txt
 
 echo  "##Logappend to /dev/null should be invalid ">>results$1.txt
-./logappend -T 1 -K token -E emp -A /dev/null
+./$1/code/build/logappend -T 1 -K token -E emp -A /dev/null
 echo >> results$1.txt
 
 echo " ## Logappend to /etc/passwd should be invalid ">>results$1.txt
-./logappend -T 1 -K token -E emp -A /etc/passwd
+./$1/code/build/logappend -T 1 -K token -E emp -A /etc/passwd
 echo >> results$1.txt
 
 echo "## Logappend to batch /etc/passwd should be invalid once ">>results$1.txt
-./logappend -B /etc/passwd
+./$1/code/build/logappend -B /etc/passwd
 echo >> results$1.txt
 
 echo "## Logread to /dev/null should be integrity violation ">>results$1.txt
-./logread -K token -S /dev/null
+./$1/code/build/logread -K token -S /dev/null
 echo >> results$1.txt
-./logread -K token -T -G guest /dev/null
+./$1/code/build/logread -K token -T -G guest /dev/null
 echo >> results$1.txt
-./logread -K token -R -G guest /dev/null
+./$1/code/build/logread -K token -R -G guest /dev/null
 echo >> results$1.txt
-./logread -K token -I -G guest /dev/null
+./$1/code/build/logread -K token -I -G guest /dev/null
 echo >> results$1.txt
 
 echo "## Logread to /etc/passwd should be integrity violation ">>results$1.txt
-./logread -K token -S /etc/passwd
+./$1/code/build/logread -K token -S /etc/passwd
 echo >> results$1.txt
-./logread -K token -T -G guest /etc/passwd
+./$1/code/build/logread -K token -T -G guest /etc/passwd
 echo >> results$1.txt
-./logread -K token -R -G guest /etc/passwd
+./$1/code/build/logread -K token -R -G guest /etc/passwd
 echo >> results$1.txt
-./logread -K token -I -G guest /etc/passwd
+./$1/code/build/logread -K token -I -G guest /etc/passwd
 echo >> results$1.txt
 
 echo "## Periods should be accepted on filenames ">>results$1.txt
-./logappend -T 1 -K token -E emp -A file.log
+./$1/code/build/logappend -T 1 -K token -E emp -A file.log
 echo >> results$1.txt
 
 echo " ## Filenames with periods should be able to be opened">>results$1.txt
-./logappend -T 1 -K token -E emp -A file.log
+./$1/code/build/logappend -T 1 -K token -E emp -A file.log
 echo >> results$1.txt
-./logread -K token -S file.log
+./$1/code/build/logread -K token -S file.log
 echo >> results$1.txt
 
 echo "## Logappend should make file on current path ">>results$1.txt
-./logappend -T 1 -K token -E emp -A ./1
+./$1/code/build/logappend -T 1 -K token -E emp -A ./1
 echo >> results$1.txt
 
 echo "##Logread should be able to read files on current path ">>results$1.txt
-./logappend -T 1 -K token -E emp -A ./1
+./$1/code/build/logappend -T 1 -K token -E emp -A ./1
 echo >> results$1.txt
-./logread -K token -S ./1
+./$1/code/build/logread -K token -S ./1
 echo >> results$1.txt
 
 echo "##Cannot enter guest to gallery if already in gallery ">>results$1.txt
-./logappend -K token -T 1 -G guest -A logfile
+./$1/code/build/logappend -K token -T 1 -G guest -A logfile
 echo >> results$1.txt
-./logappend -K token -T 2 -G guest -A logfile
+./$1/code/build/logappend -K token -T 2 -G guest -A logfile
 echo >> results$1.txt
 
 echo "##Cannot enter employee to gallery if already in gallery ">>results$1.txt
-./logappend -K token -T 1 -E emp -A logfile
+./$1/code/build/logappend -K token -T 1 -E emp -A logfile
 echo >> results$1.txt
-./logappend -K token -T 2 -E emp -A logfile
+./$1/code/build/logappend -K token -T 2 -E emp -A logfile
 echo >> results$1.txt
 
 echo "##Cannot add to smaller timestamp ">>results$1.txt
-./logappend -K token -T 2 -G guest -A logfile
+./$1/code/build/logappend -K token -T 2 -G guest -A logfile
 echo >> results$1.txt
-./logappend -K token -T 1 -G guest -A logfile
+./$1/code/build/logappend -K token -T 1 -G guest -A logfile
 echo >> results$1.txt
 
 echo "##Invalid token is error ">>results$1.txt
-./logappend -K %hello -T 2 -G guest -A log
+./$1/code/build/logappend -K %hello -T 2 -G guest -A log
 echo >> results$1.txt
 
 echo "##Employee and guest can have same name ">>results$1.txt
-./logappend -K token -T 2 -G bob -A log
+./$1/code/build/logappend -K token -T 2 -G bob -A log
 echo >> results$1.txt
-./logappend -K token -T 3 -E bob -A log
+./$1/code/build/logappend -K token -T 3 -E bob -A log
 echo >> results$1.txt
-./logread -K token -S log
+./$1/code/build/logread -K token -S log
 echo >> results$1.txt
 
 echo "##Test parameter order, all should work ">>results$1.txt
-./logappend -K token -T 1 -G guest -A logfile
+./$1/code/build/logappend -K token -T 1 -G guest -A logfile
 echo >> results$1.txt
-./logappend -T 1 -K token -G guest -A logfile
+./$1/code/build/logappend -T 1 -K token -G guest -A logfile
 echo >> results$1.txt
 
 echo "##Cannot have both employee and guest ">>results$1.txt
-./logappend -K token -T 1 -G guest -E employee -A log
+./$1/code/build/logappend -K token -T 1 -G guest -E employee -A log
 echo >> results$1.txt
 
 echo "##Missing log file error ">>results$1.txt
-./logappend -K token -T 1 -G guest -E employee -A
+./$1/code/build/logappend -K token -T 1 -G guest -E employee -A
 echo >> results$1.txt
 
 echo "##Cannot have both arrival and departure ">>results$1.txt
-./logappend -K token -T 1 -E emp -A -L log
+./$1/code/build/logappend -K token -T 1 -E emp -A -L log
 echo >> results$1.txt
 
 echo "##Employee cannot leave gallery without leaving room ">>results$1.txt
-./logappend  -K token -T 181 -E eI -A log1
+./$1/code/build/logappend  -K token -T 181 -E eI -A log1
 echo >> results$1.txt
-./logappend  -K token -T 182 -E eI -A -R 1 log1
+./$1/code/build/logappend  -K token -T 182 -E eI -A -R 1 log1
 echo >> results$1.txt
-./logappend  -K token -T 183 -E eI -L log1
+./$1/code/build/logappend  -K token -T 183 -E eI -L log1
 echo >> results$1.txt
 
 echo "##Employee cannot leave room without being in it ">>results$1.txt
-./logappend -K token -T 101 -E eE -A log1
+./$1/code/build/logappend -K token -T 101 -E eE -A log1
 echo >> results$1.txt
-./logappend  -K token -T 102 -E eE -L -R 1 log1
+./$1/code/build/logappend  -K token -T 102 -E eE -L -R 1 log1
 echo >> results$1.txt
 
 echo "##Employee cannot arrive to another room without first leaving it ">>results$1.txt
-./logappend -K token -T 141 -E eG -A log1
+./$1/code/build/logappend -K token -T 141 -E eG -A log1
 echo >> results$1.txt
-./logappend -K token -T 142 -E eG -A -R 1 log1
+./$1/code/build/logappend -K token -T 142 -E eG -A -R 1 log1
 echo >> results$1.txt
-./logappend -K token -T 143 -E eG -A -R 2 log1
+./$1/code/build/logappend -K token -T 143 -E eG -A -R 2 log1
 echo >> results$1.txt
 
 echo "##Employee attempt to leave room ">>results$1.txt
-./logappend -T 341 -K token -E eS -A log1
+./$1/code/build/logappend -T 341 -K token -E eS -A log1
 echo >> results$1.txt
-./logappend -T 342 -K token -E eS -A -R 1 log1
+./$1/code/build/logappend -T 342 -K token -E eS -A -R 1 log1
 echo >> results$1.txt
-./logappend -T 343 -K token -E eS -L -R 1 log1
+./$1/code/build/logappend -T 343 -K token -E eS -L -R 1 log1
 echo >> results$1.txt
-./logappend -T 344 -K token -E eS -L log1
+./$1/code/build/logappend -T 344 -K token -E eS -L log1
 echo >> results$1.txt
-./logappend -T 345 -K token -E eS -L -R 1 log1
+./$1/code/build/logappend -T 345 -K token -E eS -L -R 1 log1
 echo >> results$1.txt
 
 echo "##Employee attempt to leave another room ">>results$1.txt
-./logappend -T 121 -K token -E eF -A log1
+./$1/code/build/logappend -T 121 -K token -E eF -A log1
 echo >> results$1.txt
-./logappend -T 122 -K token -E eF -A -R 1 log1
+./$1/code/build/logappend -T 122 -K token -E eF -A -R 1 log1
 echo >> results$1.txt
-./logappend -T 123 -K token -E eF -L -R 2 log1
+./$1/code/build/logappend -T 123 -K token -E eF -L -R 2 log1
 echo >> results$1.txt
 
 echo "##Guest cannot leave gallery without leaving room ">>results$1.txt
-./logappend  -K token -T 181 -G eI -A log1
+./$1/code/build/logappend  -K token -T 181 -G eI -A log1
 echo >> results$1.txt
-./logappend  -K token -T 182 -G eI -A -R 1 log1
+./$1/code/build/logappend  -K token -T 182 -G eI -A -R 1 log1
 echo >> results$1.txt
-./logappend  -K token -T 183 -G eI -L log1
+./$1/code/build/logappend  -K token -T 183 -G eI -L log1
 echo >> results$1.txt
 
 echo "##Guest cannot leave room without being in it ">>results$1.txt
-./logappend -K token -T 101 -G eE -A log1
+./$1/code/build/logappend -K token -T 101 -G eE -A log1
 echo >> results$1.txt
-./logappend  -K token -T 102 -G eE -L -R 1 log1
+./$1/code/build/logappend  -K token -T 102 -G eE -L -R 1 log1
 echo >> results$1.txt
 
 echo "##Guest cannot arrive to another room without first leaving it ">>results$1.txt
-./logappend -K token -T 141 -G eG -A log1
+./$1/code/build/logappend -K token -T 141 -G eG -A log1
 echo >> results$1.txt
-./logappend -K token -T 142 -G eG -A -R 1 log1
+./$1/code/build/logappend -K token -T 142 -G eG -A -R 1 log1
 echo >> results$1.txt
-./logappend -K token -T 143 -G eG -A -R 2 log1
+./$1/code/build/logappend -K token -T 143 -G eG -A -R 2 log1
 echo >> results$1.txt
 
 echo "##Guest attempt to leave room ">>results$1.txt
-./logappend -T 341 -K token -G eS -A log1
+./$1/code/build/logappend -T 341 -K token -G eS -A log1
 echo >> results$1.txt
-./logappend -T 342 -K token -G eS -A -R 1 log1
+./$1/code/build/logappend -T 342 -K token -G eS -A -R 1 log1
 echo >> results$1.txt
-./logappend -T 343 -K token -G eS -L -R 1 log1
+./$1/code/build/logappend -T 343 -K token -G eS -L -R 1 log1
 echo >> results$1.txt
-./logappend -T 344 -K token -G eS -L log1
+./$1/code/build/logappend -T 344 -K token -G eS -L log1
 echo >> results$1.txt
-./logappend -T 345 -K token -G eS -L -R 1 log1
+./$1/code/build/logappend -T 345 -K token -G eS -L -R 1 log1
 echo >> results$1.txt
 
 echo "##Guest attempt to leave another room ">>results$1.txt
-./logappend -T 121 -K token -G eF -A log1
+./$1/code/build/logappend -T 121 -K token -G eF -A log1
 echo >> results$1.txt
-./logappend -T 122 -K token -G eF -A -R 1 log1
+./$1/code/build/logappend -T 122 -K token -G eF -A -R 1 log1
 echo >> results$1.txt
-./logappend -T 123 -K token -G eF -L -R 2 log1
+./$1/code/build/logappend -T 123 -K token -G eF -L -R 2 log1
 echo >> results$1.txt
 
 echo "##Cannot leave room without being in it! ">>results$1.txt
-./logappend -T 91 -K token -G gD -L -R 2 log1
+./$1/code/build/logappend -T 91 -K token -G gD -L -R 2 log1
 echo >> results$1.txt
 
 echo "##Cannot leave gallery without being in it ">>results$1.txt
-./logappend -T 92 -K token -G gD -L log1
+./$1/code/build/logappend -T 92 -K token -G gD -L log1
 echo >> results$1.txt
 
 echo "##Should print error on non existent batch ">>results$1.txt
-./logappend -B foo
+./$1/code/build/logappend -B foo
 echo >> results$1.txt
 
 echo "##Cannot have non numeric room ">>results$1.txt
-./logappend -K token -T 1 -E base -A log1
+./$1/code/build/logappend -K token -T 1 -E base -A log1
 echo >> results$1.txt
-./logappend -K token -T 9 -G guestI -A log1
+./$1/code/build/logappend -K token -T 9 -G guestI -A log1
 echo >> results$1.txt
-./logappend -K token -T 20 -G guestI -A -R foo log1
+./$1/code/build/logappend -K token -T 20 -G guestI -A -R foo log1
 echo >> results$1.txt
 
 echo "##Non numeric room for leave ">>results$1.txt
-./logappend -K token -T 1 -E base -A log1
+./$1/code/build/logappend -K token -T 1 -E base -A log1
 echo >> results$1.txt
-./logappend -K token -T 9 -G guestI -A log1
+./$1/code/build/logappend -K token -T 9 -G guestI -A log1
 echo >> results$1.txt
-./logappend -K token -T 20 -G guestI -A -R 1 log1
+./$1/code/build/logappend -K token -T 20 -G guestI -A -R 1 log1
 echo >> results$1.txt
-./logappend -K token -T 20 -G guestI -L -R foo log1
+./$1/code/build/logappend -K token -T 20 -G guestI -L -R foo log1
 echo >> results$1.txt
 
 echo "##Room 2, 02, 002 should all be 2 ">>results$1.txt
-./logappend -T 1 -K token -G guestA -A log1
+./$1/code/build/logappend -T 1 -K token -G guestA -A log1
 echo >> results$1.txt
-./logappend -T 2 -K token -G guestB -A log1
+./$1/code/build/logappend -T 2 -K token -G guestB -A log1
 echo >> results$1.txt
-./logappend -T 3 -K token -G guestC -A log1
+./$1/code/build/logappend -T 3 -K token -G guestC -A log1
 echo >> results$1.txt
-./logappend -T 4 -K token -G guestD -A log1
+./$1/code/build/logappend -T 4 -K token -G guestD -A log1
 echo >> results$1.txt
-./logappend -T 5 -K token -G guestE -A log1
+./$1/code/build/logappend -T 5 -K token -G guestE -A log1
 echo >> results$1.txt
-./logappend -T 6 -K token -G guestF -A log1
+./$1/code/build/logappend -T 6 -K token -G guestF -A log1
 echo >> results$1.txt
-./logappend -T 7 -K token -G guestG -A log1
+./$1/code/build/logappend -T 7 -K token -G guestG -A log1
 echo >> results$1.txt
-./logappend -T 8 -K token -G guestH -A log1
+./$1/code/build/logappend -T 8 -K token -G guestH -A log1
 echo >> results$1.txt
-./logappend -T 10 -K token -G guestJ -A log1
+./$1/code/build/logappend -T 10 -K token -G guestJ -A log1
 echo >> results$1.txt
-./logappend -T 11 -K token -G guestK -A log1
+./$1/code/build/logappend -T 11 -K token -G guestK -A log1
 echo >> results$1.txt
-./logappend -T 12 -K token -G guestA -A -R 2 log1
+./$1/code/build/logappend -T 12 -K token -G guestA -A -R 2 log1
 echo >> results$1.txt
-./logappend -T 13 -K token -G guestB -A -R 02 log1
+./$1/code/build/logappend -T 13 -K token -G guestB -A -R 02 log1
 echo >> results$1.txt
-./logappend -T 14 -K token -G guestC -A -R 002 log1
+./$1/code/build/logappend -T 14 -K token -G guestC -A -R 002 log1
 echo >> results$1.txt
-./logappend -T 15 -K token -G guestD -A -R 0 log1
+./$1/code/build/logappend -T 15 -K token -G guestD -A -R 0 log1
 echo >> results$1.txt
-./logread -K token -S log1
+./$1/code/build/logread -K token -S log1
 echo >> results$1.txt
 
 echo "##Should accept really long names employee ">>results$1.txt
-./logappend -K token -T 1 -E aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -A log1
+./$1/code/build/logappend -K token -T 1 -E aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -A log1
 echo >> results$1.txt
 
 echo "##Should accept really long names guest ">>results$1.txt
-./logappend -K token -T 1 -G aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -A log1
+./$1/code/build/logappend -K token -T 1 -G aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -A log1
 echo >> results$1.txt
 
 echo "##Should not accept non numeric timestamp ">>results$1.txt
-./logappend -K token -T foo -E alphatimestampe -A log1
+./$1/code/build/logappend -K token -T foo -E alphatimestampe -A log1
 echo >> results$1.txt
 
 echo "##Cannot have two logs same time ">>results$1.txt
-./logappend -T 5 -K token -E pppp -A log1
+./$1/code/build/logappend -T 5 -K token -E pppp -A log1
 echo >> results$1.txt
-./logappend -T 5 -K token -E pD -A log1
+./$1/code/build/logappend -T 5 -K token -E pD -A log1
 echo >> results$1.txt
 
 echo "##Should not have the second entry ">>results$1.txt
-./logappend -T 5 -K token -E pppp -A log1
+./$1/code/build/logappend -T 5 -K token -E pppp -A log1
 echo >> results$1.txt
-./logappend -T 5 -K token -G pE -A log1
+./$1/code/build/logappend -T 5 -K token -G pE -A log1
 echo >> results$1.txt
-./logread -K token -S log1
+./$1/code/build/logread -K token -S log1
 echo >> results$1.txt
 
 echo "##All guests should appear, watch rooms on new lines ">>results$1.txt
-./logappend -K token -T 1 -G guestA -A log1
+./$1/code/build/logappend -K token -T 1 -G guestA -A log1
 echo >> results$1.txt
-./logappend -K token -T 2 -G guestB -A log1
+./$1/code/build/logappend -K token -T 2 -G guestB -A log1
 echo >> results$1.txt
-./logappend -K token -T 3 -G guestC -A log1
+./$1/code/build/logappend -K token -T 3 -G guestC -A log1
 echo >> results$1.txt
-./logappend -K token -T 4 -G guestD -A log1
+./$1/code/build/logappend -K token -T 4 -G guestD -A log1
 echo >> results$1.txt
-./logappend -K token -T 5 -G guestE -A log1
+./$1/code/build/logappend -K token -T 5 -G guestE -A log1
 echo >> results$1.txt
-./logappend -K token -T 6 -G guestF -A log1
+./$1/code/build/logappend -K token -T 6 -G guestF -A log1
 echo >> results$1.txt
-./logappend -K token -T 7 -G guestG -A log1
+./$1/code/build/logappend -K token -T 7 -G guestG -A log1
 echo >> results$1.txt
-./logappend -K token -T 8 -G guestH -A log1
+./$1/code/build/logappend -K token -T 8 -G guestH -A log1
 echo >> results$1.txt
-./logappend -K token -T 10 -G guestJ -A log1
+./$1/code/build/logappend -K token -T 10 -G guestJ -A log1
 echo >> results$1.txt
-./logappend -K token -T 11 -G guestK -A log1
+./$1/code/build/logappend -K token -T 11 -G guestK -A log1
 echo >> results$1.txt
-./logappend -K token -T 12 -G guestA -A -R 2 log1
+./$1/code/build/logappend -K token -T 12 -G guestA -A -R 2 log1
 echo >> results$1.txt
-./logappend -K token -T 13 -G guestB -A -R 02 log1
+./$1/code/build/logappend -K token -T 13 -G guestB -A -R 02 log1
 echo >> results$1.txt
-./logappend -K token -T 14 -G guestC -A -R 002 log1
+./$1/code/build/logappend -K token -T 14 -G guestC -A -R 002 log1
 echo >> results$1.txt
-./logappend -K token -T 15 -G guestD -A -R 0 log1
+./$1/code/build/logappend -K token -T 15 -G guestD -A -R 0 log1
 echo >> results$1.txt
-./logread -K token -S log1
+./$1/code/build/logread -K token -S log1
 echo >> results$1.txt
 
 echo "##All emps should appear, watch rooms on new lines ">>results$1.txt
-./logappend -K token -T 1 -E empA -A log1
+./$1/code/build/logappend -K token -T 1 -E empA -A log1
 echo >> results$1.txt
-./logappend -K token -T 2 -E empB -A log1
+./$1/code/build/logappend -K token -T 2 -E empB -A log1
 echo >> results$1.txt
-./logappend -K token -T 3 -E empC -A log1
+./$1/code/build/logappend -K token -T 3 -E empC -A log1
 echo >> results$1.txt
-./logappend -K token -T 4 -E empD -A log1
+./$1/code/build/logappend -K token -T 4 -E empD -A log1
 echo >> results$1.txt
-./logappend -K token -T 5 -E empE -A log1
+./$1/code/build/logappend -K token -T 5 -E empE -A log1
 echo >> results$1.txt
-./logappend -K token -T 6 -E empF -A log1
+./$1/code/build/logappend -K token -T 6 -E empF -A log1
 echo >> results$1.txt
-./logappend -K token -T 7 -E empG -A log1
+./$1/code/build/logappend -K token -T 7 -E empG -A log1
 echo >> results$1.txt
-./logappend -K token -T 8 -E empH -A log1
+./$1/code/build/logappend -K token -T 8 -E empH -A log1
 echo >> results$1.txt
-./logappend -K token -T 10 -E empJ -A log1
+./$1/code/build/logappend -K token -T 10 -E empJ -A log1
 echo >> results$1.txt
-./logappend -K token -T 11 -E empK -A log1
+./$1/code/build/logappend -K token -T 11 -E empK -A log1
 echo >> results$1.txt
-./logappend -K token -T 12 -E empA -A -R 2 log1
+./$1/code/build/logappend -K token -T 12 -E empA -A -R 2 log1
 echo >> results$1.txt
-./logappend -K token -T 13 -E empB -A -R 02 log1
+./$1/code/build/logappend -K token -T 13 -E empB -A -R 02 log1
 echo >> results$1.txt
-./logappend -K token -T 14 -E empC -A -R 002 log1
+./$1/code/build/logappend -K token -T 14 -E empC -A -R 002 log1
 echo >> results$1.txt
-./logappend -K token -T 15 -E empD -A -R 0 log1
+./$1/code/build/logappend -K token -T 15 -E empD -A -R 0 log1
 echo >> results$1.txt
-./logread -K token -S log1
+./$1/code/build/logread -K token -S log1
 echo >> results$1.txt
 
 echo "##Should not be valid last logappend ">>results$1.txt
-./logappend -T 261 -K token -E eN -A log1
+./$1/code/build/logappend -T 261 -K token -E eN -A log1
 echo >> results$1.txt
-./logappend -T 262 -K token -E eN -A -R 1 log1
+./$1/code/build/logappend -T 262 -K token -E eN -A -R 1 log1
 echo >> results$1.txt
-./logappend -T 263 -K token -E eN -A log1
+./$1/code/build/logappend -T 263 -K token -E eN -A log1
 echo >> results$1.txt
-./logread -K token -S log1
+./$1/code/build/logread -K token -S log1
 echo >> results$1.txt
 
 echo "##Cannot arrive to room after having arrived on it ">>results$1.txt
-./logappend -T 171 -K token -G gH -A log1
+./$1/code/build/logappend -T 171 -K token -G gH -A log1
 echo >> results$1.txt
-./logappend -T 172 -K token -G gH -A -R 1 log1
+./$1/code/build/logappend -T 172 -K token -G gH -A -R 1 log1
 echo >> results$1.txt
-./logappend -T 173 -K token -G gH -A -R 1 log1
+./$1/code/build/logappend -T 173 -K token -G gH -A -R 1 log1
 echo >> results$1.txt
-./logread -K token -S log1
+./$1/code/build/logread -K token -S log1
 echo >> results$1.txt
 
 echo "##Should not accept more than one log file ">>results$1.txt
-./logappend -T 1 -K token -G gH -A log log2
+./$1/code/build/logappend -T 1 -K token -G gH -A log log2
 echo >> results$1.txt
 
 echo "##Non existing batch file is error ">>results$1.txt
-./logappend -B pepe
+./$1/code/build/logappend -B pepe
 echo >> results$1.txt
 echo "##Bad path should be error ">>results$1.txt
-./logappend -T 1 -K token ~/
+./$1/code/build/logappend -T 1 -K token ~/
 echo >> results$1.txt
 
 echo "##Timestamp 0 is error ">>results$1.txt
-./logappend -T 0 -K token -G gH -A log2
+./$1/code/build/logappend -T 0 -K token -G gH -A log2
 echo >> results$1.txt
 
 echo "##Timestamp greater than 1073741823 or negative is error ">>results$1.txt
-./logappend -T 1073741824 -K token -G gH -A log
+./$1/code/build/logappend -T 1073741824 -K token -G gH -A log
 echo >> results$1.txt
 
 echo "##Room greater than 1073741823 or negative is error ">>results$1.txt
-./logappend -T 1 -K token -G gH -A log
+./$1/code/build/logappend -T 1 -K token -G gH -A log
 echo >> results$1.txt
-./logappend -T 2 -K token -G gH -A -R 1073741824 log
+./$1/code/build/logappend -T 2 -K token -G gH -A -R 1073741824 log
 echo >> results$1.txt
