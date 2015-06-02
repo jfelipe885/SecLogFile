@@ -1,4 +1,3 @@
-echo "-Line  1 " 
 echo "Test begins...\n" > results$1.txt
 echo "-Line  2 " 
 echo "Unicode tests(4 invalid)" >> results$1.txt
